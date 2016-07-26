@@ -33,5 +33,9 @@ module.exports = {
 				res.status(200).send(newBlog);
 			};
 		});
+	},
+
+	getLikes : function(req,res){
+		
 	}
 }

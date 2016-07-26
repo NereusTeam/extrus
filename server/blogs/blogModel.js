@@ -6,7 +6,9 @@ var Schema = mongoose.Schema;
 var blogSchema = new Schema({
 	from : {type: String , required: true},
 	title : {type : String , required: true},
-	blog : {type : String , required: true}
+	blog : {type : String , required: true},
+	likes: {type : [String] , required: false},
+	comments: {type : [String]}
 });
 
 var Blog = mongoose.model('Blog' ,  blogSchema);
