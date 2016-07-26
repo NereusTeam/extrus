@@ -35,6 +35,16 @@ module.exports = {
 		});
 	},
 
+	save : function (req,res,blog,status){
+		blog.save(function (error, result) {
+						if(error){
+							res.status(500).send(error)
+						}else{
+							res.status(200).send(status);
+						}
+					})
+	},
+
 	addLikes : function(req,res){
 		var username = req.body.username;
 		var blogId = req.params.id;
@@ -46,24 +56,16 @@ module.exports = {
 			}else{
 				if(!blog.likes.includes(username)){
 					blog.likes.push(username);
-					blog.save(function (error, result) {
-						if(error){
-							res.status(500).send(error)
-						}else{
-							res.status(200).send("liked");
-						}
-					})
+					module.exports.save(req,res,blog,"like");
 				}else{
 					blog.likes.splice(blog.likes.indexOf(username),1);
-					blog.save(function (error, result) {
-						if(error){
-							res.status(500).send(error)
-						}else{
-							res.status(200).send("unlike");
-						}
-					})
+					module.exports.save(req,res,blog,"unlike")
 				}
 			}
 		})
+	}, 
+
+	addComment : function (req,res) {
+
 	}
 }
