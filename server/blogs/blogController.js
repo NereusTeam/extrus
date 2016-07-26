@@ -37,17 +37,33 @@ module.exports = {
 
 	addLikes : function(req,res){
 		var username = req.body.username;
-		var blogId = req.body.blogId;
+		var blogId = req.params.id;
 
-		Blog.find({_id:blogId})
+		Blog.findOne({_id:blogId})
 		.exec(function (error, blog){
 			if(error){
 				res.status(500).send(error);
 			}else{
-				if(!blog.includes(username)){
-					blog.like.push(username)
+				if(!blog.likes.includes(username)){
+					blog.likes.push(username);
+					blog.save(function (error, result) {
+						if(error){
+							res.status(500).send(error)
+						}else{
+							console.log(blog.likes)
+							res.status(200).send("liked");
+						}
+					})
 				}else{
-					blog.like.splice(indexOf(username),1);
+					blog.likes.splice(blog.likes.indexOf(username),1);
+					blog.save(function (error, result) {
+						if(error){
+							res.status(500).send(error)
+						}else{
+							console.log(blog.likes)
+							res.status(200).send("unlike");
+						}
+					})
 				}
 			}
 		})
