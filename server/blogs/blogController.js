@@ -50,7 +50,6 @@ module.exports = {
 						if(error){
 							res.status(500).send(error)
 						}else{
-							console.log(blog.likes)
 							res.status(200).send("liked");
 						}
 					})
@@ -60,7 +59,6 @@ module.exports = {
 						if(error){
 							res.status(500).send(error)
 						}else{
-							console.log(blog.likes)
 							res.status(200).send("unlike");
 						}
 					})
