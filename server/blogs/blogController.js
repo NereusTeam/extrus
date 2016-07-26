@@ -35,7 +35,21 @@ module.exports = {
 		});
 	},
 
-	getLikes : function(req,res){
-		
+	addLikes : function(req,res){
+		var username = req.body.username;
+		var blogId = req.body.blogId;
+
+		Blog.find({_id:blogId})
+		.exec(function (error, blog){
+			if(error){
+				res.status(500).send(error);
+			}else{
+				if(!blog.includes(username)){
+					blog.like.push(username)
+				}else{
+					blog.like.splice(indexOf(username),1);
+				}
+			}
+		})
 	}
 }
