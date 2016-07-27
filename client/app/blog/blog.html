@@ -25,6 +25,10 @@
 			        <h2>{{blog.title}}</h2>
 			        <h3>{{blog.blog}}</h3>
 			        <br>
+			        <p ng-click="like(blog._id)">Likes:{{blog.likes.length}}</p>
+			        comments:<p ng-repeat="comment in blog.comments">
+			        {{comment.username}} : {{comment.comment}}
+			        </p>
 			        <hr>
 			        <br>
 		      	</div>

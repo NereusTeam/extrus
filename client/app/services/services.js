@@ -105,9 +105,24 @@ angular.module('RBKme.services', [])
     });
   };
 
+  // function to like the blog
+  // we should send the username and the blogId in the body
+
+  var like = function(blog){
+    return $http({
+      method: 'POST',
+      url: '/api/blogs/like',
+      data: blog
+    })
+    .then(function(resp){
+      return resp;
+    })
+  }
+
   return {
     getAll: getAll,
-    addOne: addOne
+    addOne: addOne,
+    like: like
   };
 })
 .factory('Dialogs', function ($http) {
