@@ -60,7 +60,7 @@ module.exports = {
 	},
 
   getOne : function(req,res){
-    User.findOne({username: req.params.id})
+    User.findOne({username: req.params.username})
         .exec(function(err, user){
           if(user){
             // res.setHeader('Content-Type', 'application/json');

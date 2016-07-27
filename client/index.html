@@ -9,9 +9,10 @@
     <link href="lib/angular-jk-rating-stars/dist/jk-rating-stars.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    
   </head>
-  <body ng-controller="mainCtrl">
+ <!--  <body ng-controller="mainCtrl">
+
+  <div class="container"></div>
 
   <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
@@ -50,22 +51,21 @@
     </div>
   </div>
 </div>
-
+</div> -->
     <div ng-view class="examples"></div>
     <center>
         <div style="color:white; width:2% ">
         </div>
     </center>
-
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-aria/angular-aria.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-material/angular-material.js"></script>
     <script src="lib/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
-
+    <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+    <script src="app/socketIO/chat.js"></script>
     <script src="app/auth/auth.js"></script>
     <script src="app/blog/blog.js"></script>
     <script src="app/blog/newBlog.js"></script>

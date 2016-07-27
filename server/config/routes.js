@@ -3,8 +3,14 @@ var userController = require('../users/userController.js');
 var messageController = require('../messages/messageController.js')
 var helpers = require('./helpers.js');
 
+
+////////////////////
+var Chat = require('../socketIO/socketIOmodel.js')
+////////////////////
 // exporting DB controller's functions
 module.exports = function(app, express){
+
+
 
 	app.post('/api/users/signin', userController.signin);
 	app.get('/api/users/signedin', userController.checkAuth);
