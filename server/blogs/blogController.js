@@ -47,7 +47,7 @@ module.exports = {
 
 	addLikes : function(req,res){
 		var username = req.body.username;
-		var blogId = req.params.id;
+		var blogId = req.body.blogId;
 
 		Blog.findOne({_id:blogId})
 		.exec(function (error, blog){

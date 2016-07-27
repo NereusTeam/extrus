@@ -6,7 +6,6 @@ angular.module('RBKme.blog', [])
 	// calling the isAuth function to know whether the user has signed in or not yet
 	$scope.auth = Auth.isAuth;
 	$scope.username = window.username;
-	console.log($scope.username)
 
 	$scope.initalize = function(){
 
@@ -33,10 +32,17 @@ angular.module('RBKme.blog', [])
 		.catch(function(error){
 			console.log(errors);
 		});
-
-		Blogs.like({username:$scope.username, blogId:_Id})
 	};
 	
+	$scope.like = function(param){
+		Blogs.like({username:$scope.username, blogId:param})
+		.then(function(result){
+			if(result){
+				$scope.initalize();
+			}
+		})
+	}
+
 	$scope.addPost = function(ev) {
     // for more info about the parameters we're passing here
     // check the documentation in the showDialog function

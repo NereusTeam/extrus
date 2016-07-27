@@ -111,11 +111,10 @@ angular.module('RBKme.services', [])
   var like = function(blog){
     return $http({
       method: 'POST',
-      url: '/api/blogs/like:id',
+      url: '/api/blogs/like',
       data: blog
     })
     .then(function(resp){
-      console.log(resp)
       return resp;
     })
   }
