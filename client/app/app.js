@@ -10,6 +10,8 @@ angular.module('RBKme', [
   'RBKme.home',
   'RBKme.auth',
   'RBKme.admin',
+  // added RBKme.chatroom 
+  'RBKme.chatroom',
   'ngRoute',
   'ngMaterial',
   'ngAnimate',
@@ -32,6 +34,10 @@ angular.module('RBKme', [
     .when('/messages', {
       templateUrl: 'app/messages/messages.html',
       controller: 'MsgController',
+    })
+    .when('/chatroom', {
+      templateUrl: 'app/chatroom/chatroom.html',
+      controller: 'chatroomController',
     })
     .otherwise({
       redirectTo: '/'

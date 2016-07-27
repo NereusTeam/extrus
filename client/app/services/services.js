@@ -15,10 +15,10 @@ angular.module('RBKme.services', [])
   };
 
   // function to get a single user from the database
-  var getOne = function (id) {
+  var getOne = function (username) {
     return $http({
       method: 'GET',
-      url: '/api/users/'+id
+      url: '/api/users/'+username
     })
     .then(function (resp) {
       return resp.data;
@@ -185,6 +185,7 @@ angular.module('RBKme.services', [])
       data: fromTo
     })
     .then(function (resp) {
+      console.log(fromTo);
       return resp.data;
     });
   };
