@@ -10,6 +10,7 @@ angular.module('RBKme', [
   'RBKme.home',
   'RBKme.auth',
   'RBKme.admin',
+  'RBKme.chat',
   'ngRoute',
   'ngMaterial',
   'ngAnimate',
@@ -23,15 +24,19 @@ angular.module('RBKme', [
     })
     .when('/blogs', {
       templateUrl: 'app/blog/blog.html',
-      controller: 'BlogController',
+      controller: 'BlogController'
     })
     .when('/admin', {
       templateUrl: 'app/admin/admin.html',
-      controller: 'adminController',
+      controller: 'adminController'
     })
     .when('/messages', {
       templateUrl: 'app/messages/messages.html',
-      controller: 'MsgController',
+      controller: 'MsgController'
+    })
+    .when('/chat', {
+      templateUrl: 'app/socketIO/chat.html',
+      controller: 'chatController'
     })
     .otherwise({
       redirectTo: '/'

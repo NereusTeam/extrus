@@ -15,10 +15,10 @@ angular.module('RBKme.services', [])
   };
 
   // function to get a single user from the database
-  var getOne = function (id) {
+  var getOne = function (username) {
     return $http({
       method: 'GET',
-      url: '/api/users/'+id
+      url: '/api/users/?username='+username
     })
     .then(function (resp) {
       return resp.data;
@@ -241,4 +241,14 @@ angular.module('RBKme.services', [])
     forgotPassword: forgotPassword,
     signout: signout
   };
-});;
+})
+
+.factory('chat', function () {
+  var socket = function () {
+    var socket = io.connect('http://localhost:8000')
+    return socket;
+  }
+  return {
+    socket: socket
+  }
+})
