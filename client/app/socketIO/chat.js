@@ -4,11 +4,11 @@ angular.module('RBKme.chat', [])
 	$scope.msg = {};
 	$scope.msgs = [];
 	$scope.sendMsg = function (socket) {
-		chat.socket.emit('send msg', $scope.msg.text);
+		chat.socket().emit('send msg', $scope.msg.text);
 		$scope.msg.text = '';
 	}
 
-	chat.socket.on('get msg', function (data) {
+	chat.socket().on('get msg', function (data) {
 		$scope.msgs.push(data);
 		console.log($scope.msgs)
 		$scope.$digest()
