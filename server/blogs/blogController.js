@@ -77,7 +77,6 @@ module.exports = {
 			}else{
 				var obj = {username:req.body.username , comment : req.body.comment};
 				blog.comments.push(obj);
-				console.log(blog.comments)
 				module.exports.save(req,res,blog,"comment success!!");
 			}
 		})
