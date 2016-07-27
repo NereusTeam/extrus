@@ -67,7 +67,7 @@ module.exports = {
 
 	addComment : function (req,res) {
 		var username = req.body.username;
-		var blogId = req.params.id;
+		var blogId = req.body.blogId;
 		var comment = req.body.comment;
 
 		Blog.findOne({_id:blogId})
