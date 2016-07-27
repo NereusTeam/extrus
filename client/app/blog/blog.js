@@ -38,6 +38,7 @@ angular.module('RBKme.blog', [])
 		Blogs.like({username:$scope.username, blogId:param})
 		.then(function(result){
 			if(result){
+				//reload the blogs to show the new number of likes
 				$scope.initalize();
 			}
 		})
