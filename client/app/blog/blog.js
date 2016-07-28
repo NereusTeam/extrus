@@ -44,9 +44,13 @@ angular.module('RBKme.blog', [])
 		})
 	};
 
-	$scope.comment = function(param){
-		Blogs.comment({username:$scope.username, blogId:param})
-	}
+	$scope.comment = function(id,comment){
+		console.log("id is:",id,"comment is:",comment)
+		Blogs.comment({username:$scope.username, blogId:id, comment : comment})
+		.then(function (result) {
+			$scope.initalize();
+		})
+	};
 
 	$scope.addPost = function(ev) {
     // for more info about the parameters we're passing here
