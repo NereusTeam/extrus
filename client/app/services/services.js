@@ -250,7 +250,7 @@ angular.module('RBKme.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.RBKme');
-    // $window.localStorage.removeItem('username');
+    $window.localStorage.removeItem('username');
     $location.path('/');
   };
 
