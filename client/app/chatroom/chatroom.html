@@ -1,29 +1,34 @@
-<div class="list-group col-md-2 pre-scrollable" >
-	<button type="button" ng-repeat="user in data.users" class="list-group-item" ng-click="setUser(user)">
-		{{user.username}}
-	</button>
-</div>
-<div class="list col-md-6">
-	<div  ng-repeat="message in data.messages" class="list-group-item" >
-		<div ng-if="message.from===toUser.username"  style="text-align : left;" >
-			<div ng-if="flagFrom">
-				<img class="img-circle" ng-src={{toUser.image}} ng-load="console.log('2')" width="50px">
-			</div>
-			<div style="padding-left:10px">
-				<h2>{{message.text}}</h2>
-			</div>
-		</div>
-		<div ng-if="message.from===curentUser.username" style="text-align : right;">
-			<div ng-if="flagTo">
-				<img class="img-circle" ng-src={{curentUser.image}} width="50px">
-			</div>
-			<div>
-				{{message.text}}
-			</div>
-		</div>
+<script>
+	alert('5');
+</script>
+<div class="row">
+<div class="col-md-2" style="overflow-y : scroll ; height : 800px">
+	<div>
+		<input type="text" class="form-control" name="search" placeholder="Search" ng-model="search">
 	</div>
-	<div style="margin-top :10px">
-		<input type="text" class="form-control" placeholder="Text input">
+	<div class="list-group" >
+		<button type="button" ng-repeat="user in data.users | filter :search" class="list-group-item" ng-click="setUser(user)">
+			{{user.username}}
+		</button>
+	</div>
+</div>
+<div class="list col-md-6 " id="scrollDiv" scroll-bottom="data.messages" style="overflow-y : scroll ; height : 800px" scroll-glue>
+	<ul>
+	<li  ng-repeat="message in data.messages" class="list-group-item">
+		<div ng-if="message.from===toUser.username">
+			<img class="img-circle" ng-src={{toUser.image}} ng-load="console.log('2')" width="50px">
+		</div>
+		<div ng-if="message.from===curentUser.username">
+			<img class="img-circle" ng-src={{curentUser.image}} ng-load="console.log('2')" width="50px">
+		</div>
+		<div style="padding-left:10px">
+			<p>{{message.text}}</p>
+		</div>
+	</li>
+	</ul>
+	<div  id="footer" class="list col-md-6">
+			<input  type="text" class="form-control" ng-model="messageText" placeholder="Text input" style="width:80% ; float:left">
+			<button type="button" ng-click="sendMessage()" style="width:18%">send</button>
 	</div>
 </div>
 <div class="list-group col-md-4">
@@ -51,4 +56,6 @@
 
 
 	</div>
+</div>
+
 </div>

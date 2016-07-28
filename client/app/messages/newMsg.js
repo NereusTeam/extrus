@@ -1,6 +1,6 @@
 angular.module('RBKme.newMsg', [])
 
-.controller('newMsgController', function ($scope, $mdDialog, Messages,friends) {
+.controller('newMsgController', function ($scope, $mdDialog, Messages,friends, $window) {
 
 	$scope.msg = {};
 	$scope.friends = friends;
@@ -22,7 +22,8 @@ angular.module('RBKme.newMsg', [])
 		if(!$scope.msg.to || !$scope.msg.text){
 			handleInputs($scope,'Please fill all fields');
 		} else {
-			$scope.msg.from = window.username;
+			//$scope.msg.from = window.username;
+			$scope.msg.from=$window.localStorage.getItem('username');
 			// sending the message
 			Messages.sendMessage($scope.msg)
 			.then(function(response){

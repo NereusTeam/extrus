@@ -1,8 +1,10 @@
 angular.module('RBKme.chat', [])
 
-.controller('chatController', function ($scope, socket) {
+
+.controller('chatController', function ($scope, socket, Users, Messages , $window) {
 	$scope.msg = {};
 	$scope.msgs = [];
+	$scope.msg.from = $window.localStorage.getItem('username');
 	$scope.sendMsg = function () {
 		socket.chat().emit('send msg');
 		$scope.msg.text = '';
@@ -12,6 +14,10 @@ angular.module('RBKme.chat', [])
 		$scope.msgs.push(data);
 		console.log($scope.msgs)
 		$scope.$digest()
-	})
-})
 
+	})
+	Users.getAll()
+		.then(function(users){
+			$scope.data.friends = users;
+	});
+})

@@ -2,7 +2,7 @@ angular.module('RBKme.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, $mdDialog, $mdMedia, Auth, Dialogs) {
   
-  $window.username = '';
+ // $window.username = '';
 
   $scope.user = {};
 
@@ -23,12 +23,14 @@ angular.module('RBKme.auth', [])
     	} else {
           // checking if the username and password are correct
     	    Auth.signin($scope.user)
-    	      .then(function (token) {
+    	      .then(function (data) {
               // saving a token so we can know a user has signed in
               // to give him access to multiple functionalities
               // on the website
-    	        $window.localStorage.setItem('com.RBKme', token);
-              $window.username = $scope.user.username;
+    	        $window.localStorage.setItem('com.RBKme', data.token);
+              $window.localStorage.setItem('username', data.username);
+              console.log(data.username)
+              //$window.username = $scope.user.username;
               $scope.user.username = '';
               $scope.user.password = '';
     	        $mdDialog.hide('Success');
@@ -47,7 +49,6 @@ angular.module('RBKme.auth', [])
   // signing the user out and removing the token saved previously
   // by calling the Auth.signout function
   $scope.signout = function () {
-    $window.username = '';
     Auth.signout();
   };
 

@@ -1,6 +1,6 @@
 angular.module('RBKme.msgHistory', [])
 
-.controller('msgHistoryController', function ($scope, $mdDialog, Messages, Users, fromToObj , $route) {
+.controller('msgHistoryController', function ($scope, $mdDialog, Messages, Users, fromToObj , $route , $window) {
 
 	$scope.data = {};
 	$scope.user = {};
@@ -48,7 +48,8 @@ angular.module('RBKme.msgHistory', [])
 
     $scope.myFunc = function (text) {
       var sendObject = {
-      	from : window.username , 
+      	//from : window.username , 
+      	from: $window.localStorage.getItem('username'),
       	to : $scope.friend.username ,
       	text : text
       }

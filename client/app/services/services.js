@@ -240,7 +240,7 @@ angular.module('RBKme.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return resp.data;
     });
   };
 
@@ -250,6 +250,7 @@ angular.module('RBKme.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.RBKme');
+    $window.localStorage.removeItem('username');
     $location.path('/');
   };
 

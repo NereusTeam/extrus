@@ -1,11 +1,11 @@
 angular.module('RBKme.blog', [])
 
-.controller('BlogController', function ($scope, $mdDialog, $mdMedia, Blogs, Users, Auth, Dialogs) {
+.controller('BlogController', function ($scope, $mdDialog, $mdMedia, Blogs, Users, Auth, Dialogs, $window) {
 	$scope.data = {};
 
 	// calling the isAuth function to know whether the user has signed in or not yet
 	$scope.auth = Auth.isAuth;
-	$scope.username = window.username;
+	$scope.username = $window.localStorage.getItem('username');
 
 	$scope.initalize = function(){
 
@@ -44,9 +44,13 @@ angular.module('RBKme.blog', [])
 		})
 	};
 
-	$scope.comment = function(param){
-		Blogs.comment({username:$scope.username, blogId:param})
-	}
+	$scope.comment = function(id,comment){
+		console.log("id is:",id,"comment is:",comment)
+		Blogs.comment({username:$scope.username, blogId:id, comment : comment})
+		.then(function (result) {
+			$scope.initalize();
+		})
+	};
 
 	$scope.addPost = function(ev) {
     // for more info about the parameters we're passing here

@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
+  <body ng-controller="mainCtrl">
   <body ng-controller="mainCtrl" >
-
   <div class="container">
 
     <div ng-switch on="loggedIN" >
@@ -48,13 +48,8 @@
       </ul>
     </div>
   </div>
-</div>
-</div>
+
     <div ng-view class="examples"></div>
-    <center>
-        <div style="color:white; width:2% ">
-        </div>
-    </center>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
