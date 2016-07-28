@@ -1,3 +1,8 @@
+#footer {
+    position: fixed;
+    bottom: 0;
+}
+
 select.custom-dropdown {
  -webkit-appearance: none;  
  -moz-appearance: none;  
