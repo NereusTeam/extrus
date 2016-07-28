@@ -67,6 +67,8 @@ module.exports = {
 	getMessage : function(req,res){
 		var username = req.body.username;
 		var friend = req.body.friend;
+		console.log(username);
+		console.log(friend);
 		Message.find({
 			$or : [
 			{from: username , to:friend}, {from : friend , to : username}

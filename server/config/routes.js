@@ -36,8 +36,8 @@ module.exports = function(app, express){
 	// Getting blogs and adding new blogs
 	app.get('/api/blogs', blogController.getAllBlogs);
 	app.post('/api/blogs', blogController.newBlog);
-	app.post('/api/blogs/like/:id', blogController.addLikes);
-	app.post('/api/blogs/comment/:id', blogController.addComment);
+	app.post('/api/blogs/like', blogController.addLikes);
+	app.post('/api/blogs/comment', blogController.addComment);
 
 	// If a request is sent somewhere other than the routes above,
 	// send it through custom error handler
