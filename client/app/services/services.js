@@ -18,7 +18,7 @@ angular.module('RBKme.services', [])
   var getOne = function (username) {
     return $http({
       method: 'GET',
-      url: '/api/users/?username='+username
+      url: '/api/users/'+username
     })
     .then(function (resp) {
       return resp.data;
@@ -214,6 +214,7 @@ angular.module('RBKme.services', [])
       data: fromTo
     })
     .then(function (resp) {
+      console.log(fromTo);
       return resp.data;
     });
   };

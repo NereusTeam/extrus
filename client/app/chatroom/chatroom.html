@@ -1,0 +1,54 @@
+<div class="list-group col-md-2 pre-scrollable" >
+	<button type="button" ng-repeat="user in data.users" class="list-group-item" ng-click="setUser(user)">
+		{{user.username}}
+	</button>
+</div>
+<div class="list col-md-6">
+	<div  ng-repeat="message in data.messages" class="list-group-item" >
+		<div ng-if="message.from===toUser.username"  style="text-align : left;" >
+			<div ng-if="flagFrom">
+				<img class="img-circle" ng-src={{toUser.image}} ng-load="console.log('2')" width="50px">
+			</div>
+			<div style="padding-left:10px">
+				<h2>{{message.text}}</h2>
+			</div>
+		</div>
+		<div ng-if="message.from===curentUser.username" style="text-align : right;">
+			<div ng-if="flagTo">
+				<img class="img-circle" ng-src={{curentUser.image}} width="50px">
+			</div>
+			<div>
+				{{message.text}}
+			</div>
+		</div>
+	</div>
+	<div style="margin-top :10px">
+		<input type="text" class="form-control" placeholder="Text input">
+	</div>
+</div>
+<div class="list-group col-md-4">
+	<div type="button"  class="list-group-item" >
+		<!-- {{data.users[0]}} -->
+		<img ng-src="{{toUser.image || curentUser.image}}" alt="Description" width="100%" />
+		<h1 style="text-align:center;">{{toUser.firstName ||  +" "+ toUser.lastName || curentUser.lastName}}</h1>
+		<h2 style="text-align:center;">
+		<a href="{{toUser.gitHub}}"><i class="fa fa-github" aria-hidden="true"></i> {{toUser.username || curentUser.username}}</a></h2>
+		
+
+
+		<table class="table-responsive">
+			<table class="table">
+				<tr>
+					<td>email</td>
+					<td>{{toUser.email || curentUser.email}}</td>
+				</tr>
+				<tr>
+					<td>Cohort Number</td>
+					<td>{{toUser.cohortNumber || curentUser.cohortNumber}}</td>
+				</tr>
+			</table>
+		</table>
+
+
+	</div>
+</div>
