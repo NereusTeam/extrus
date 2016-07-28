@@ -1,5 +1,27 @@
 angular.module('RBKme.chatroom', [])
-.controller('chatroomController', function ($scope, Users ,Messages) {
+
+
+
+
+
+.directive('scrollBottom', function () {
+  return {
+    scope: {
+      scrollBottom: "=scrollBottom"
+    },
+    link: function (scope, element) {
+      scope.$watchCollection('scrollBottom', function (newValue) {
+        if (newValue)
+        {
+          $(element).scrollTop($(element)[0].scrollHeight+1);
+        }
+      });
+    }
+  }
+})
+
+
+.controller('chatroomController', function ($scope, Users ,Messages, $location, $anchorScroll) {
 
 	$scope.data={};
   $scope.curentUser={};
@@ -69,6 +91,9 @@ angular.module('RBKme.chatroom', [])
 
     console.log(mesg);
 
+
   }
   
-});
+})
+
+
