@@ -45,6 +45,29 @@ angular.module('RBKme.chatroom', [])
     .catch(function(error){
       console.log(error);
     })
+  }
+
+  $scope.sendMessage=function(){
+    var mesg={ 
+      from : $scope.curentUser.username ,
+      to :   $scope.toUser.username,
+      text : $scope.messageText
+    };
+
+    Messages.sendMessage(mesg)
+      .then(function(response){
+        if(response.status === 201){
+          $scope.data.messages.push(mesg);
+        } else {
+          alert('Something Went Wrong, Please Try Again!');
+        }
+        $scope.messageText="";
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+
+    console.log(mesg);
 
   }
   
