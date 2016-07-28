@@ -42,6 +42,10 @@ angular.module('RBKme.blog', [])
 				$scope.initalize();
 			}
 		})
+	};
+
+	$scope.comment = function(param){
+		Blogs.comment({username:$scope.username, blogId:param})
 	}
 
 	$scope.addPost = function(ev) {

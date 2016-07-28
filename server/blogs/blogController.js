@@ -67,7 +67,7 @@ module.exports = {
 
 	addComment : function (req,res) {
 		var username = req.body.username;
-		var blogId = req.params.id;
+		var blogId = req.body.blogId;
 		var comment = req.body.comment;
 
 		Blog.findOne({_id:blogId})
@@ -77,7 +77,6 @@ module.exports = {
 			}else{
 				var obj = {username:req.body.username , comment : req.body.comment};
 				blog.comments.push(obj);
-				console.log(blog.comments)
 				module.exports.save(req,res,blog,"comment success!!");
 			}
 		})
