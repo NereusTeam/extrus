@@ -18,6 +18,10 @@
     "socket-io": "latest",
     "angular-mocks": "latest",
     "angular-material": "latest",
-    "angular-jk-rating-stars":"latest"
+    "angular-jk-rating-stars": "latest",
+    "angular-scroll-glue": "^2.0.7"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }
