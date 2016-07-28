@@ -190,7 +190,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
 .st_thumbs_wrapper {
   height: 10%;
 }
-.examples {
+/*.examples {
   background: #ddd;
   margin-bottom: 2em;
   overflow: hidden;
@@ -198,7 +198,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
   position: relative;
   border-top: solid 1px #fff;
   border-bottom: solid 1px #fff;
-}
+}*/
 .myBtn {
   background-color: grey;
   color:white;
