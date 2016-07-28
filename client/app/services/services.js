@@ -273,12 +273,29 @@ angular.module('RBKme.services', [])
   };
 })
 
-.factory('chat', function () {
-  var socket = function () {
-    var socket = io.connect('http://localhost:8000')
-    return socket;
-  }
-  return {
-    socket: socket
-  }
+.factory('socket', function () {
+    var chat = function () {
+      var socket = io.connect('http://localhost:8000')
+      return socket;  
+    }
+    return {
+      chat:chat
+    }
+})
+
+
+
+.factory('room', function ($http) {
+  var getMessages = function (clickedRoom) {
+      return $http({
+        method: 'GET',
+        url: '/msg?room=' + clickedRoom
+      })
+      .then(function (resp) {
+        return resp.data;
+      });
+    }
+    return {
+      getMessages: getMessages
+    }
 })
