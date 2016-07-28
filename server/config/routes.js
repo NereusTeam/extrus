@@ -3,6 +3,10 @@ var userController = require('../users/userController.js');
 var messageController = require('../messages/messageController.js')
 var helpers = require('./helpers.js');
 
+
+////////////////////
+
+////////////////////
 // exporting DB controller's functions
 module.exports = function(app, express){
 
@@ -11,27 +15,29 @@ module.exports = function(app, express){
 	app.get('/api/users', userController.getAllUsers);
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
-	app.post('/api/users/editProfile', userController.editProfile);
-	app.get('/api/users/:id', userController.getOne);
+	app.post('/api/users/editProfile',helpers.decode, userController.editProfile);
+	app.get('/api/users/:id',helpers.decode, userController.getOne);
 
 	//Delete User
 	app.post('/api/users/delete', userController.deleteUser);
 
 
 	// Pair Reflect Post
-	app.post('/api/users/pairReflect',userController.pairReflectCalculator);
+	app.post('/api/users/pairReflect',helpers.decode,userController.pairReflectCalculator);
 
 
 	// Two Posts for getting the messages and sending the message
-	app.post('/api/users/sendMessage', messageController.sendMessage);
-	app.post('/api/users/getMessages', messageController.getMessage);
-	app.post('/api/users/getUserMessagedFriends', messageController.getUserMessagedFriends);
+	app.post('/api/users/sendMessage',helpers.decode, messageController.sendMessage);
+	app.post('/api/users/getMessages',helpers.decode, messageController.getMessage);
+	app.post('/api/users/getUserMessagedFriends',helpers.decode, messageController.getUserMessagedFriends);
 
 	// app.get('/api/users/getMessages', messageController.getAllMessages); just for testing
 
 	// Getting blogs and adding new blogs
-	app.get('/api/blogs', blogController.getAllBlogs);
+	app.get('/api/blogs',helpers.decode, blogController.getAllBlogs);
 	app.post('/api/blogs', blogController.newBlog);
+	app.post('/api/blogs/like',helpers.decode, blogController.addLikes);
+	app.post('/api/blogs/comment', helpers.decode,blogController.addComment);
 
 	// If a request is sent somewhere other than the routes above,
 	// send it through custom error handler

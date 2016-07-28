@@ -12,8 +12,7 @@
      	<br><br><br><br>
      	<div class="blogs">
 	         <center>
-	         <div class="blog row" style="background-color: #99c2ff
-;opacity:0.8;text-align:left;font-family:Futura,Trebuchet MS,Arial,sans-serif;line-height:380%;" 
+	         <div class="blog row"  
 	            ng-repeat="blog in data.blogs | filter:search">
 		        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 		      	<div class="col-lg-3 col-md-3 col-sm-6">
@@ -25,6 +24,12 @@
 			        <h2>{{blog.title}}</h2>
 			        <h3>{{blog.blog}}</h3>
 			        <br>
+			        <p ng-click="like(blog._id)">Likes:{{blog.likes.length}}</p>
+			       <!--  <form name="signupForm" method="post" ng-submit='comment(blog._id)'> -->
+			        comments:<input type="text" name="comment" ng-model="something"><button ng-click="comment(blog._id,something)">send</button>
+			        <p ng-repeat="comment in blog.comments">
+			        {{comment.username}} : {{comment.comment}}
+			        </p>
 			        <hr>
 			        <br>
 		      	</div>

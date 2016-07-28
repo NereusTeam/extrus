@@ -12,16 +12,9 @@
     <link href="lib/angular-jk-rating-stars/dist/jk-rating-stars.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <style type="text/css">
-      [scroll-glue]{
-        height: 100px;
-        overflow-y: scroll;
-        border: 1px solid gray;
-      }
-    </style>
   </head>
+  <body ng-controller="mainCtrl">
   <body ng-controller="mainCtrl" >
-
   <div class="container">
 
     <div ng-switch on="loggedIN" >
@@ -54,20 +47,17 @@
       </ul>
     </div>
   </div>
-
     <div ng-view class="examples"></div>
-    
+
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-aria/angular-aria.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-material/angular-material.js"></script>
     <script src="lib/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
-    <!--<script src="lib/angular-scroll-glue/src/scrollglue.js"></script>-->
-    <script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
-
+    <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+    <script src="app/socketIO/chat.js"></script>
     <script src="app/auth/auth.js"></script>
     <script src="app/blog/blog.js"></script>
     <script src="app/blog/newBlog.js"></script>
@@ -80,7 +70,6 @@
     <script src="app/profile/profileView.js"></script>
     <script src="app/services/services.js"></script>
     <script src="uploadToImgur.js"></script>
-    <script src="config/api_keys.js"></script>
     <script src="app/admin/admin.js"></script>
     <script src="app/app.js"></script>
   </body>

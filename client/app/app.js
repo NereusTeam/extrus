@@ -10,6 +10,7 @@ angular.module('RBKme', [
   'RBKme.home',
   'RBKme.auth',
   'RBKme.admin',
+  'RBKme.chat',
   // added RBKme.chatroom 
   'RBKme.chatroom',
   'ngRoute',
@@ -25,15 +26,19 @@ angular.module('RBKme', [
     })
     .when('/blogs', {
       templateUrl: 'app/blog/blog.html',
-      controller: 'BlogController',
+      controller: 'BlogController'
     })
     .when('/admin', {
       templateUrl: 'app/admin/admin.html',
-      controller: 'adminController',
+      controller: 'adminController'
     })
     .when('/messages', {
       templateUrl: 'app/messages/messages.html',
-      controller: 'MsgController',
+      controller: 'MsgController'
+    })
+    .when('/chat', {
+      templateUrl: 'app/socketIO/chat.html',
+      controller: 'chatController'
     })
     .when('/chatroom', {
       templateUrl: 'app/chatroom/chatroom.html',
@@ -47,11 +52,14 @@ angular.module('RBKme', [
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
 })
-.controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth, Dialogs) {
+.controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth, Dialogs,$window) {
   
   // a flag to switch between signin and signout buttons
-  $scope.loggedIN = false;
-  
+  if(Auth.isAuth)
+    $scope.loggedIN = false;
+  else
+    $scope.loggedIN = true;
+
   $scope.signin = function(ev) {
     // for more info about the parameters we're passing here
     // check the documentation in the showDialog function
@@ -60,7 +68,9 @@ angular.module('RBKme', [
       'AuthController','app/auth/signin.html',ev,
       {},function(answer){
         if(answer){
-        $scope.loggedIN = true;
+       // $scope.loggedIN = true;
+      $scope.loggedIN=true;
+     console.log($window.localStorage.getItem('com.RBKme'));
         console.log('Successful Login');
         }
       },function(){

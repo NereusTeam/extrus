@@ -105,11 +105,40 @@ angular.module('RBKme.services', [])
     });
   };
 
+  // function to like the blog
+
+  var like = function(blog){
+    return $http({
+      method: 'POST',
+      url: '/api/blogs/like',
+      data: blog
+    })
+    .then(function(resp){
+      return resp;
+    })
+  };
+
+  // function to add comments to the blog
+
+  var comment = function(blog){
+    return $http({
+      method : 'POST',
+      url : '/api/blogs/comment',
+      data : blog
+    })
+    .then(function(resp){
+      return resp;
+    })
+  };
+
   return {
     getAll: getAll,
-    addOne: addOne
+    addOne: addOne,
+    like: like,
+    comment : comment
   };
 })
+
 .factory('Dialogs', function ($http) {
   // function to show the dialogs
   var showDialog = function($scope,$mdDialog,$mdMedia,controller,htmlTemplate,event,paramsObj,successCB,failureCB){
@@ -211,7 +240,7 @@ angular.module('RBKme.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return resp.data;
     });
   };
 
@@ -221,6 +250,7 @@ angular.module('RBKme.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.RBKme');
+    $window.localStorage.removeItem('username');
     $location.path('/');
   };
 
@@ -242,4 +272,14 @@ angular.module('RBKme.services', [])
     forgotPassword: forgotPassword,
     signout: signout
   };
-});;
+})
+
+.factory('chat', function () {
+  var socket = function () {
+    var socket = io.connect('http://localhost:8000')
+    return socket;
+  }
+  return {
+    socket: socket
+  }
+})

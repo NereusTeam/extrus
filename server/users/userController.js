@@ -60,7 +60,7 @@ module.exports = {
 	},
 
   getOne : function(req,res){
-    User.findOne({username: req.params.id})
+    User.findOne({username: req.params.username})
         .exec(function(err, user){
           if(user){
             // res.setHeader('Content-Type', 'application/json');
@@ -122,7 +122,7 @@ module.exports = {
 
 
 	signin: function (req, res) {
-    var username = req.body.username;
+    var username=req.body.username;
     var password = req.body.password;
 
     User.findOne({username: username})
@@ -136,9 +136,14 @@ module.exports = {
             if(!found){
               res.status(500).send('Wrong Password');
             } else {
+              console.log("write user")
               var token = jwt.encode(user, 'secret');
               res.setHeader('x-access-token',token);
-              res.json({token: token});
+              var data={
+                token: token,
+                username: username
+              }
+              res.json(data);
             }
           });
         }
@@ -146,7 +151,8 @@ module.exports = {
   },
 
   newUser: function (req, res) {
-    User.findOne({username: req.body.username})
+    var username=req.body.username;
+    User.findOne({username: username})
     .exec(function(error,user){
       if(error){
         res.status(500).send(error);
@@ -203,7 +209,9 @@ module.exports = {
   },
 
   editProfile : function(req,res){
-    User.findOne({username: req.body.username})
+    //var username=req.body.username;
+    var username=req.user.username;
+    User.findOne({username: username})
       .exec( function(error, user){
         if(error){
           res.end(error);
@@ -250,7 +258,8 @@ module.exports = {
   },
 
   pairReflectCalculator : function(req,res){
-    var from  = req.body.from; // global username 
+    //var from=req.body.from;
+    var from  = req.user.from; // global username 
     var username  = req.body.username; // takes username assigned to rate (string) as body 
     var reflection  = req.body.pairReflect; //  takes pairReflect (number) as body
     var flag = false;
@@ -267,7 +276,7 @@ module.exports = {
     // so that not every user can rate more than one time
     // probably make a new table of pair reflection .
 
-    User.findOne({username: req.body.username})
+    User.findOne({username: req.user.username})
       .exec(function(err , user){
         if(!user){
           return res.status(500).send('User not Found');

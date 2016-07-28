@@ -1,6 +1,6 @@
 angular.module('RBKme.Msg', [])
 
-.controller('MsgController', function ($scope, $mdDialog, $mdMedia, Users, Messages, Dialogs){
+.controller('MsgController', function ($scope, $mdDialog, $mdMedia, Users, Messages, Dialogs ,$window){
 
 	$scope.data = {};
 
@@ -10,7 +10,7 @@ angular.module('RBKme.Msg', [])
 		.then(function(users){
 			$scope.data.friends = users;
 			// getting list of the previous messaged friends
-			Messages.getMessagedFriends({username:window.username})
+			Messages.getMessagedFriends({username:$window.localStorage.getItem('username')})
 			.then(function(list){
 				var MsgdFrineds = [];
 				for(var i=0; i<list.length; i++){
@@ -19,7 +19,7 @@ angular.module('RBKme.Msg', [])
 							MsgdFrineds.push(users[j]);
 						// special condition where the admin logs in, then all his messages would be from the Server
 						// because the requested passwords would be send from the server to the admin inside a message
-						} else if(window.username ==='admin' && list[j]==='Server'){
+						} else if($window.localStorage.getItem('username') ==='admin' && list[j]==='Server'){
 							MsgdFrineds.push({firstName:'Server',lastName:'',username:'Server'});
 						}
 					}
@@ -58,7 +58,7 @@ angular.module('RBKme.Msg', [])
     // in the Dialogs factory in the services.js file
 		Dialogs.showDialog($scope,$mdDialog,$mdMedia,
 	      'msgHistoryController','app/messages/msgHistory.html',ev,
-	      {fromToObj:{username: window.username, friend: friend.username}},
+	      {fromToObj:{username: $window.localStorage.getItem('username'), friend: friend.username}},
 	      function(answer){
 	      	if(answer){
 	      		console.log(answer);
