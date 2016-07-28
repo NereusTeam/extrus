@@ -1,10 +1,22 @@
 angular.module('RBKme.chat', [])
 
-.controller('chatController', function ($scope, chat) {
+.controller('chatController', function ($scope, chat , Users, Messages) {
 	$scope.msg = {};
 	$scope.msgs = [];
+	$scope.data={};
 	$scope.sendMsg = function (socket) {
-		chat.socket().emit('send msg', $scope.msg.text);
+		// send one to one message
+		//$scope.msg.from = window.username;
+		Messages.sendMessage($scope.msg)
+		.then(function(resp){
+			if(resp.status === 201)
+				console.log('done')
+			else{
+				alert('Something Went Wrong, Please Try Again!');
+			}
+		});
+
+		chat.socket().emit('send msg',$scope.msg.to, $scope.msg.text);
 		$scope.msg.text = '';
 	}
 
@@ -12,5 +24,16 @@ angular.module('RBKme.chat', [])
 		$scope.msgs.push(data);
 		console.log($scope.msgs)
 		$scope.$digest()
-	})
+	});
+
+	//display all users on screen
+	Users.getAll()
+		.then(function(users){
+			$scope.data.friends = users;
+	});
+
+
+			
 })
+
+//$scope.msg.to

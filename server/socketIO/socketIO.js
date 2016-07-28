@@ -1,5 +1,6 @@
 var Chat = require('../socketIO/socketIOmodel.js')
-
+var Message = require('../messages/messageModel.js');
+var User = require('../users/userModel.js');
   
 //Listen for connection
 module.exports = function (io){

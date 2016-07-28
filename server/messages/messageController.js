@@ -6,13 +6,13 @@ module.exports = {
 	// Messages can be sent by anonymous users
 
 	sendMessage : function(req,res){
+		//changed the value of from (before=req.body.from)
 		var message = {
-			from : req.body.from || "Anonymous",
+			from : req.user.username || "Anonymous",
 			to : req.body.to,
 			text:  req.body.text,
 			date : Date.now() // setting the date to the time the method is called
 		};
-
 		User.findOne({username : req.body.to})
 			.exec(function(err, user){
 				if(!user){
@@ -29,7 +29,6 @@ module.exports = {
 					})
 				}
 			})
-
 	},
 
 	getAllMessages : function(req,res){

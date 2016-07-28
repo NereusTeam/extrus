@@ -5,20 +5,18 @@ var helpers = require('./helpers.js');
 
 
 ////////////////////
-var Chat = require('../socketIO/socketIOmodel.js')
+
 ////////////////////
 // exporting DB controller's functions
 module.exports = function(app, express){
 
-
-
 	app.post('/api/users/signin', userController.signin);
 	app.get('/api/users/signedin', userController.checkAuth);
-	app.get('/api/users', userController.getAllUsers);
+	app.get('/api/users', helpers.decode, userController.getAllUsers);
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
-	app.post('/api/users/editProfile', userController.editProfile);
-	app.get('/api/users/:id', userController.getOne);
+	app.post('/api/users/editProfile',helpers.decode, userController.editProfile);
+	app.get('/api/users/:id',helpers.decode, userController.getOne);
 
 	//Delete User
 	app.post('/api/users/delete', userController.deleteUser);
@@ -29,8 +27,8 @@ module.exports = function(app, express){
 
 
 	// Two Posts for getting the messages and sending the message
-	app.post('/api/users/sendMessage', messageController.sendMessage);
-	app.post('/api/users/getMessages', messageController.getMessage);
+	app.post('/api/users/sendMessage',helpers.decode, messageController.sendMessage);
+	app.post('/api/users/getMessages',helpers.decode, messageController.getMessage);
 	app.post('/api/users/getUserMessagedFriends', messageController.getUserMessagedFriends);
 
 	// app.get('/api/users/getMessages', messageController.getAllMessages); just for testing
