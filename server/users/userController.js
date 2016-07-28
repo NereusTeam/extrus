@@ -122,7 +122,6 @@ module.exports = {
 
 
 	signin: function (req, res) {
-    //var username = req.body.username;
     var username=req.body.username;
     var password = req.body.password;
 
@@ -137,9 +136,14 @@ module.exports = {
             if(!found){
               res.status(500).send('Wrong Password');
             } else {
+              console.log("write user")
               var token = jwt.encode(user, 'secret');
               res.setHeader('x-access-token',token);
-              res.json({token: token});
+              var data={
+                token: token,
+                username: username
+              }
+              res.json(data);
             }
           });
         }

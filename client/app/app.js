@@ -52,11 +52,20 @@ angular.module('RBKme', [
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
 })
-.controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth, Dialogs) {
+.controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth, Dialogs,$window) {
   
   // a flag to switch between signin and signout buttons
-  $scope.loggedIN = false;
-  
+  console.log($window.localStorage.getItem('com.RBKme'));
+  if($window.localStorage.getItem('com.RBKme') !== undefined)
+    $scope.loggedIN = true;
+  else
+    $scope.loggedIN = false;
+  //console.log($window.localstorage.getItem('com.RBKme'))
+  // Auth.checkAuth($window.localstorage.getItem('com.RBKme'),function(resp){
+  //   if(res.status === 200){
+  //     $scope.loggedIN = true;
+  //   }
+  // })
   $scope.signin = function(ev) {
     // for more info about the parameters we're passing here
     // check the documentation in the showDialog function
@@ -65,7 +74,9 @@ angular.module('RBKme', [
       'AuthController','app/auth/signin.html',ev,
       {},function(answer){
         if(answer){
-        $scope.loggedIN = true;
+       // $scope.loggedIN = true;
+      $scope.loggedIN=true;
+     console.log($window.localStorage.getItem('com.RBKme'));
         console.log('Successful Login');
         }
       },function(){

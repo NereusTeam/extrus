@@ -1,6 +1,6 @@
 angular.module('RBKme.newBlog', [])
 
-.controller('newBlogController', function ($scope, $mdDialog, Blogs) {
+.controller('newBlogController', function ($scope, $mdDialog, Blogs, $window) {
 
 	$scope.blog = {};
 	
@@ -22,7 +22,7 @@ angular.module('RBKme.newBlog', [])
 		if(!$scope.blog.title || !$scope.blog.blog){
 			handleBlogInputs($scope,'Please fill all fields');
 		} else {
-			$scope.blog.username = window.username;
+			$scope.blog.username = $window.localStorage.getItem('username');
 			// adding a blog
 			Blogs.addOne($scope.blog)
 			.then(function(response){

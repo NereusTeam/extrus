@@ -1,12 +1,12 @@
 angular.module('RBKme.chat', [])
 
-.controller('chatController', function ($scope, chat , Users, Messages) {
+.controller('chatController', function ($scope, chat , Users, Messages , $window) {
 	$scope.msg = {};
 	$scope.msgs = [];
 	$scope.data={};
 	$scope.sendMsg = function (socket) {
 		// send one to one message
-		//$scope.msg.from = window.username;
+		$scope.msg.from = $window.localStorage.getItem('username');
 		Messages.sendMessage($scope.msg)
 		.then(function(resp){
 			if(resp.status === 201)
