@@ -38,7 +38,8 @@ module.exports = {
 	},
 
 	getUserMessagedFriends : function(req,res){
-		var username = req.body.username;
+		//var username = req.body.username;
+		var username=req.user.username;
 		Message.find({
 			$or : [
 			{from: username}, {to : username}
@@ -65,7 +66,8 @@ module.exports = {
 	},
 
 	getMessage : function(req,res){
-		var username = req.body.username;
+		//var username = req.body.username;
+		var username=req.user.username;
 		var friend = req.body.friend;
 		console.log(username);
 		console.log(friend);

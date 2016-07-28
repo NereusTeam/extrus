@@ -23,21 +23,21 @@ module.exports = function(app, express){
 
 
 	// Pair Reflect Post
-	app.post('/api/users/pairReflect',userController.pairReflectCalculator);
+	app.post('/api/users/pairReflect',helpers.decode,userController.pairReflectCalculator);
 
 
 	// Two Posts for getting the messages and sending the message
 	app.post('/api/users/sendMessage',helpers.decode, messageController.sendMessage);
 	app.post('/api/users/getMessages',helpers.decode, messageController.getMessage);
-	app.post('/api/users/getUserMessagedFriends', messageController.getUserMessagedFriends);
+	app.post('/api/users/getUserMessagedFriends',helpers.decode, messageController.getUserMessagedFriends);
 
 	// app.get('/api/users/getMessages', messageController.getAllMessages); just for testing
 
 	// Getting blogs and adding new blogs
-	app.get('/api/blogs', blogController.getAllBlogs);
-	app.post('/api/blogs', blogController.newBlog);
-	app.post('/api/blogs/like', blogController.addLikes);
-	app.post('/api/blogs/comment', blogController.addComment);
+	app.get('/api/blogs',helpers.decode, blogController.getAllBlogs);
+	app.post('/api/blogs',helpers.decode, blogController.newBlog);
+	app.post('/api/blogs/like',helpers.decode, blogController.addLikes);
+	app.post('/api/blogs/comment', helpers.decode,blogController.addComment);
 
 	// If a request is sent somewhere other than the routes above,
 	// send it through custom error handler
