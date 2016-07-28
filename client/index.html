@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
+  <body ng-controller="mainCtrl">
   <body ng-controller="mainCtrl" >
-
   <div class="container">
 
     <div ng-switch on="loggedIN" >
@@ -47,7 +47,6 @@
       </ul>
     </div>
   </div>
-
     <div ng-view class="examples"></div>
 
     <script src="lib/angular/angular.js"></script>

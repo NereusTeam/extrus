@@ -21,7 +21,8 @@ module.exports = {
 
 	newBlog : function(req,res,next){
 		var newBlog = new Blog ({
-			from : req.body.username,
+			//from : req.body.username,
+			from : req.user.username,
 			title : req.body.title,
 			blog : req.body.blog
 		});
@@ -46,7 +47,8 @@ module.exports = {
 	},
 
 	addLikes : function(req,res){
-		var username = req.body.username;
+		//var username = req.body.username;
+		var username = req.user.username;
 		var blogId = req.body.blogId;
 
 		Blog.findOne({_id:blogId})
@@ -66,7 +68,8 @@ module.exports = {
 	}, 
 
 	addComment : function (req,res) {
-		var username = req.body.username;
+		//var username = req.body.username;
+		var username = req.user.username;
 		var blogId = req.body.blogId;
 		var comment = req.body.comment;
 
