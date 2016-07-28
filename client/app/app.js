@@ -12,6 +12,7 @@ angular.module('RBKme', [
   'RBKme.admin',
   'RBKme.chat',
   // added RBKme.chatroom 
+  'RBKme.chatroom',
   'ngRoute',
   'ngMaterial',
   'ngAnimate',
