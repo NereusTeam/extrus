@@ -5,6 +5,7 @@ angular.module('RBKme.blog', [])
 
 	// calling the isAuth function to know whether the user has signed in or not yet
 	$scope.auth = Auth.isAuth;
+	$scope.username = window.username;
 
 	$scope.initalize = function(){
 
@@ -33,6 +34,20 @@ angular.module('RBKme.blog', [])
 		});
 	};
 	
+	$scope.like = function(param){
+		Blogs.like({username:$scope.username, blogId:param})
+		.then(function(result){
+			if(result){
+				//reload the blogs to show the new number of likes
+				$scope.initalize();
+			}
+		})
+	};
+
+	$scope.comment = function(param){
+		Blogs.comment({username:$scope.username, blogId:param})
+	}
+
 	$scope.addPost = function(ev) {
     // for more info about the parameters we're passing here
     // check the documentation in the showDialog function
