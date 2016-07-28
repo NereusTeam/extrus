@@ -7,6 +7,7 @@ module.exports = {
 
 	sendMessage : function(req,res){
 		//changed the value of from (before=req.body.from)
+		console.log(req.user.username)
 		var message = {
 			from : req.user.username || "Anonymous",
 			to : req.body.to,

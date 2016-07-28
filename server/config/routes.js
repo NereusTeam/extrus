@@ -12,7 +12,7 @@ module.exports = function(app, express){
 
 	app.post('/api/users/signin', userController.signin);
 	app.get('/api/users/signedin', userController.checkAuth);
-	app.get('/api/users', helpers.decode, userController.getAllUsers);
+	app.get('/api/users', userController.getAllUsers);
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
 	app.post('/api/users/editProfile',helpers.decode, userController.editProfile);
@@ -35,7 +35,7 @@ module.exports = function(app, express){
 
 	// Getting blogs and adding new blogs
 	app.get('/api/blogs',helpers.decode, blogController.getAllBlogs);
-	app.post('/api/blogs',helpers.decode, blogController.newBlog);
+	app.post('/api/blogs', blogController.newBlog);
 	app.post('/api/blogs/like',helpers.decode, blogController.addLikes);
 	app.post('/api/blogs/comment', helpers.decode,blogController.addComment);
 

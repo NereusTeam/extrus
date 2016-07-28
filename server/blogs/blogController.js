@@ -20,9 +20,10 @@ module.exports = {
 	},
 
 	newBlog : function(req,res,next){
+	
 		var newBlog = new Blog ({
 			//from : req.body.username,
-			from : req.user.username,
+			from : req.body.username,
 			title : req.body.title,
 			blog : req.body.blog
 		});
@@ -69,7 +70,7 @@ module.exports = {
 
 	addComment : function (req,res) {
 		//var username = req.body.username;
-		var username = req.user.username;
+		var username = req.body.username;
 		var blogId = req.body.blogId;
 		var comment = req.body.comment;
 
