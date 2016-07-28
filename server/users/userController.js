@@ -123,7 +123,7 @@ module.exports = {
 
 	signin: function (req, res) {
     //var username = req.body.username;
-    var username=req.user.username;
+    var username=req.body.username;
     var password = req.body.password;
 
     User.findOne({username: username})
