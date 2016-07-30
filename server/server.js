@@ -15,7 +15,7 @@ mongoose.connect(mongoURI);
 // configure our server with all the middleware and routing
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
-require('./socketIO/socketIO.js')(io);
+require('./socketIO/socketMessages.js')(io);
 // start listening to requests on port 8000
 server.listen(port, function(){
 	console.log('Server now listening on port ',port )
