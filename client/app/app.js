@@ -59,7 +59,7 @@ angular.module('RBKme', [
 .controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth, Dialogs,$window) {
   
   // a flag to switch between signin and signout buttons
-  if(Auth.isAuth)
+  if(!window.localStorage.getItem('username'))
     $scope.loggedIN = false;
   else
     $scope.loggedIN = true;

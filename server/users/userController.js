@@ -62,8 +62,9 @@ module.exports = {
   getOne : function(req,res){
     User.findOne({username: req.params.username})
         .exec(function(err, user){
+          console.log( req.params.username);
           if(user){
-            // res.setHeader('Content-Type', 'application/json');
+             //res.setHeader('Content-Type', 'application/json');
             return res.status(200).send(user);
           }
         })

@@ -27,8 +27,9 @@
 	</li>
 	</ul>
 	<div  id="footer" class="list col-md-6">
-			<input  type="text" class="form-control" ng-model="messageText" placeholder="Text input" style="width:80% ; float:left">
-			<button type="button" ng-click="sendMessage()" style="width:18%">send</button>
+		<form ng-submit="sendMessage()">
+			<input  type="text" class="form-control" ng-model="messageText" placeholder="Text input" style="width:80% ; float:left" ng-submit="sendMessage()">
+		</form>	
 	</div>
 </div>
 <div class="list-group col-md-4">

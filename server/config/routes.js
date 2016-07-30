@@ -79,7 +79,7 @@ app.get('/msg', function(req, res) {
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
 	app.post('/api/users/editProfile',helpers.decode, userController.editProfile);
-	app.get('/api/users/:id',helpers.decode, userController.getOne);
+	app.get('/api/users/:username', userController.getOne);
 
 	//Delete User
 	app.post('/api/users/delete', userController.deleteUser);
