@@ -1,13 +1,13 @@
-var Chat = require('../socketIO/socketIOmodel.js')
+var Chat = require('../socketIO/socketMessagesModel.js')
 var Message = require('../messages/messageModel.js');
 var User = require('../users/userModel.js');
+var Room = require('../roomChat/roomsModel.js');
   
 //Listen for connection
 module.exports = function (io){
   io.sockets.on('connection', function(socket) {
     console.log('connected')
     socket.on('send msg',function(data){
-      console.log(data.to)
       var message=new Message({
         from:data.from,
         to:data.to,
@@ -16,29 +16,24 @@ module.exports = function (io){
       })
       message.save(function(err,saved){
         io.sockets.emit('get msg'+data.to ,saved);
-        console.log('get msg'+data.to);
       })
     })
-    // socket.on('send msg', function (data) {
-    //   var newChat = new Chat({
-    //                           created: new Date(),
-    //                           content: data,
-    //                           username: 'hosuam',
-    //                           room: 'socet.io'
-    //                         });
-    //   newChat.save(function(err, savedChat) {
-    //     console.log(savedChat);
-    //     io.sockets.emit('get msg', data)
-    //   });
-    // });
+    
 
-    var defaultRoom = 'general';
-    var rooms = ["General", "angular", "socket.io", "express", "node", "mongo", "PHP", "laravel"];
-
-    //Emit the rooms array
-    socket.emit('setup', {
-      rooms: rooms
-    });
+     //Emit the rooms array
+    Room.find().exec(function(err, allRooms){
+        socket.emit('setup', {
+        rooms: allRooms
+      });
+    })
+     //Emit the users array
+    User.find().exec(function(err, allUsers){
+      socket.emit('setup', {
+        users: allUsers
+      });
+    })
+   
+    
     
     socket.on('new user', function(data) {
       data.room = defaultRoom;

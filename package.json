@@ -9,8 +9,12 @@
     "Farah Amawi <amawifarah@gmail.com>",
     "Sajedah Yousef <yousef.sajedah93@gmail.com>",
     "Tawfik kahwaje <tawfik.kahwaje@gmail.com>",
-    "Hussam Eddin Alhendi <housam35@gmail.com>"
+    "Hussam Eddin Alhendi <housam35@gmail.com>",
+    "Mihyar Almasalma <eng.mihyear@gmail.com>"
   ],
+  "engines": {
+    "node": "0.10"
+  },
   "scripts": {
     "lint": "jscs ./"
   },
@@ -24,7 +28,6 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "bower":"latest",
     "browser-sync": "^1.5.7",
     "clone-stats": "0.0.1",
     "gulp": "^3.8.5",
@@ -42,6 +45,7 @@
     "mongoose": "latest",
     "morgan": "latest",
     "q": "^1.4.1",
-    "socket.io": "latest"
+    "socket.io": "latest",
+    "bower":"latest"
   }
 }

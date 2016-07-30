@@ -28,4 +28,3 @@ dist/
 .flooignore
 
 ## API keys ##
-client/config/api_keys.js
