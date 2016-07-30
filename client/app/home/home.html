@@ -1,10 +1,13 @@
 <style>body{
     background-image:url(/assets/back.gif);
     }</style>
-<div   ng-controller="HomeController" class="md-padding" id="popupContainer" ng-cloak>
 
-<center><h1 style="color:white;margin-top:1em;font-size:60px;font-family:"Arial Black", Gadget, sans-serif">RBKme</h1><center>
+<!-- <div class="bubbleChart"/> -->
 
+
+ <img src="../assets/img2.jpg" style="width:100%"> 
+
+<div   ng-controller="HomeController"  ng-cloak>
    <center> <div >
      	<input class='search' style='margin-top: 5em; border-color: white;' type='text' ng-model='search' placeholder='search' /><br><br>
     </div> </center>
@@ -15,7 +18,7 @@
 
             ng-repeat="user in data.users | filter:search">
 
-            <img ng-if="user.username!=='admin'" class='img-circle' ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:14% ;">
+            <img ng-if="user.username!=='admin'"  ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:14% ;">
 
             <br><br>
     	</div> <center>
