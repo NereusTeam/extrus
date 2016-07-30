@@ -1,7 +1,4 @@
-<script>
-	alert('5');
-</script>
-<div class="row">
+
 <div class="col-md-2" style="overflow-y : scroll ; height : 800px">
 	<div>
 		<input type="text" class="form-control" name="search" placeholder="Search" ng-model="search">
@@ -27,8 +24,9 @@
 	</li>
 	</ul>
 	<div  id="footer" class="list col-md-6">
-			<input  type="text" class="form-control" ng-model="messageText" placeholder="Text input" style="width:80% ; float:left">
-			<button type="button" ng-click="sendMessage()" style="width:18%">send</button>
+		<form ng-submit="sendMessage()">
+			<input  type="text" class="form-control" ng-model="messageText" placeholder="Text input" style="width:80% ; float:left" ng-submit="sendMessage()">
+		</form>	
 	</div>
 </div>
 <div class="list-group col-md-4">
@@ -58,4 +56,3 @@
 	</div>
 </div>
 
-</div>

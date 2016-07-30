@@ -10,8 +10,8 @@ angular.module('RBKme', [
   'RBKme.home',
   'RBKme.auth',
   'RBKme.admin',
+  'RBKme.socketIO',
   'RBKme.chat',
-  // added RBKme.chatroom 
   'RBKme.chatroom',
   'ngRoute',
   'ngMaterial',
@@ -50,6 +50,10 @@ angular.module('RBKme', [
     .when('/events',{
       templateUrl: 'app/events/events.html',
       controller:'Eventcontroller'
+    .when('/scotch', {
+      templateUrl: 'app/scotch/scotch.html',
+      controller: 'ScotchCtrl',
+>>>>>>> 69d24e8c66296b66e71d55b1db4e8f1eafa5e6f8
     })
     .otherwise({
       redirectTo: '/'
@@ -62,7 +66,7 @@ angular.module('RBKme', [
 .controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth, Dialogs,$window) {
   
   // a flag to switch between signin and signout buttons
-  if(Auth.isAuth)
+  if(!window.localStorage.getItem('username'))
     $scope.loggedIN = false;
   else
     $scope.loggedIN = true;

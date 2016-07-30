@@ -18,7 +18,7 @@ angular.module('RBKme.blog', [])
 				for(var i=0; i<$scope.data.blogs.length; i++){
 					for(var j=0; j<users.length; j++){
 						if($scope.data.blogs[i].from === users[j].username){
-							$scope.data.blogs[i].image = users[j].image;
+							$scope.data.blogs[i].Userimage = users[j].image;
 							$scope.data.blogs[i].name = users[j].firstName + ' ' + users[j].lastName;
 							break;
 						}

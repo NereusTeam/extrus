@@ -40,6 +40,30 @@ angular.module('RBKme.newBlog', [])
 		}
 	};
 
+	$scope.choosePic = function(){
+
+		var uploadToIMGUR = window.uploadToIMGUR;
+		var IMGUR_CLIENT_ID = window.IMGUR_CLIENT_ID;
+		
+		var fileBt = $('<input>').attr('type','file');
+		fileBt.on('change', () => {
+			var file = fileBt[0].files[0];
+			var reader = new FileReader();
+			reader.addEventListener('load', ()=>{
+				var imgData = reader.result.slice(23);
+				// sending the decoded image to IMGUR to get a link for that image
+				uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result){
+					console.log(result.link)
+					$scope.blog.image = result.link;
+					$scope.changedFlag = true;
+				});
+			})
+			// using the reader to decode the image to base64
+			reader.readAsDataURL(file);
+		})
+		fileBt.click();
+	};
+
 });
 	
 var handleBlogInputs = function($scope, msg){

@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>RBKme</title>
+    <!-- Hover event -->
+    <!-- <link href="css/hover.css" rel="stylesheet" media="all"> -->
 
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.min.css" />
     
@@ -12,20 +16,46 @@
     <link href="lib/angular-jk-rating-stars/dist/jk-rating-stars.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+
+
+    <!-- Test for D3 -->
+    <script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <style>
+      .bubbleChart {
+        min-width: 100px;
+        max-width: 700px;
+        height: 700px;
+        margin: 0 auto;
+      }
+      .bubbleChart svg{
+        background: #000000;
+      }
+    </style>
   </head>
-  <body ng-controller="mainCtrl">
   <body ng-controller="mainCtrl" >
-  <div class="container">
+  <div class="container" id="container">
 
     <div ng-switch on="loggedIN" >
       <ul class="nav navbar-nav">
                 <li>
-                    <a  href="#/">Home</a>
+                    <a class="" href="#/">Home</a>
                 </li>
-                 <li>
+<!--                  <li>
                     <a href="#/messages" ng-switch-when="true"> Messages</a>
                    
-                </li>
+                </li> -->
 
                  <li>
                       <a href="#/blogs">Blogs</a>
@@ -33,7 +63,7 @@
                 </li>
 
                 <li>
-                      <a href="#/chatroom">chat Room</a>
+                      <a href="#/chatroom" ng-switch-when="true">chat Room</a>
         
                 </li>
                  <li>
@@ -51,7 +81,8 @@
       </ul>
     </div>
   </div>
-    <div ng-view class="examples"></div>
+<!-- class="bubbleChart" -->
+    <div ng-view ></div>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
@@ -61,19 +92,13 @@
     <script src="lib/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <!-- added file model -->
-    <script src="lib/angular-file-model/angular-file-model.js"></script>
-    <!-- added angular file upload -->
-    <script src="lib/ng-file-upload/ng-file-upload.js"></script>
-    <script src="lib/ng-file-upload/ng-file-upload.min.js"></script>
-
     <script src="app/events/events.js"></script>
     <script src="config/api_keys.js"></script>
     <script src="app/events/newEvent.js"></script>
     <script src="app/socketIO/chat.js"></script>
     <script src="app/auth/auth.js"></script>
     <script src="app/blog/blog.js"></script>
+    <script src="config/api_keys.js"></script>
     <script src="app/blog/newBlog.js"></script>
     <script src="app/messages/messages.js"></script>
     <script src="app/chatroom/chatroom.js"></script>
