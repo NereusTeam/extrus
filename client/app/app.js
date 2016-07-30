@@ -16,7 +16,10 @@ angular.module('RBKme', [
   'ngRoute',
   'ngMaterial',
   'ngAnimate',
-  'jkAngularRatingStars'
+  'jkAngularRatingStars',
+  //added Rbk events,
+  'RBKme.events',
+  'RBKme.newEvent'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
@@ -43,6 +46,10 @@ angular.module('RBKme', [
     .when('/chatroom', {
       templateUrl: 'app/chatroom/chatroom.html',
       controller: 'chatroomController',
+    })
+    .when('/events',{
+      templateUrl: 'app/events/events.html',
+      controller:'Eventcontroller'
     })
     .otherwise({
       redirectTo: '/'

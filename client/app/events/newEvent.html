@@ -1,4 +1,4 @@
-<md-dialog aria-label="Blog"  ng-cloak>
+<md-dialog aria-label="Event"  ng-cloak>
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools myToolbar">
@@ -10,14 +10,14 @@
 
         <h3>
         <div>
-          <label for="title" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Title</label>
+          <label for="title" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Name:</label>
           <input name='title' type="text"
             ng-model="event.name"
             placeholder="Enter event name here" value="{event.name}" class="editInput"/><br><br>
         </div>
         <div>
-          <label for="blog" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Content</label>
-        
+        <label class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Image:</label>
+        <center> <input type='text' ng-model='event.image' class='search' style="background-color: grey; margin-top:2em; border-color: white;" /> </center>
         </div>
         <div>
           <br>
@@ -28,8 +28,8 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button ng-click="answer()">
-       Post
+      <md-button ng-click="getImage()">
+       upload
       </md-button>
       <md-button ng-click="cancel()">
        Cancel

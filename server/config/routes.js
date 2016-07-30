@@ -1,6 +1,7 @@
 var blogController = require('../blogs/blogController.js');
 var userController = require('../users/userController.js');
-var messageController = require('../messages/messageController.js')
+var messageController = require('../messages/messageController.js');
+var eventsController =require('../events/eventsController.js');
 var helpers = require('./helpers.js');
 
 
@@ -16,7 +17,6 @@ module.exports = function(app, express){
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
 	app.post('/api/users/editProfile',helpers.decode, userController.editProfile);
-	app.get('/api/users/:id',helpers.decode, userController.getOne);
 
 	//Delete User
 	app.post('/api/users/delete', userController.deleteUser);
@@ -38,6 +38,12 @@ module.exports = function(app, express){
 	app.post('/api/blogs', blogController.newBlog);
 	app.post('/api/blogs/like',helpers.decode, blogController.addLikes);
 	app.post('/api/blogs/comment', helpers.decode,blogController.addComment);
+
+	//adding events
+
+	app.get('/api/users/events',eventsController.getImages)
+	app.post('/api/users/events', eventsController.saveImage)
+	app.get('/api/users/:id',helpers.decode, userController.getOne);
 
 	// If a request is sent somewhere other than the routes above,
 	// send it through custom error handler

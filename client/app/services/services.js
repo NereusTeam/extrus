@@ -283,3 +283,32 @@ angular.module('RBKme.services', [])
     socket: socket
   }
 })
+
+.factory('Events',function($http){
+
+  var getImages=function(){
+    return $http({
+      method: 'GET',
+      url:'/api/users/events'
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
+  var saveImage=function(image){
+    return $http({
+      method: 'POST',
+      url:'/api/users/events',
+      data:image
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  };
+  
+  return{
+    getImages : getImages,
+    saveImage : saveImage
+  }
+})
