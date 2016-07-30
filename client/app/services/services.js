@@ -309,7 +309,7 @@ angular.module('RBKme.services', [])
     addNewRoom: addNewRoom,
     getMessages: getMessages
   }
-});
+})
 
 .factory('Events',function($http){
   var getImages=function(){
