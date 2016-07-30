@@ -22,6 +22,9 @@
           </textarea><br><br>
         </div>
         <div>
+          <input type="button" name="blog_image" ng-model="blog.image" ng-click="choosePic()" value="Choose Picture">
+        </div>
+        <div>
           <br>
           <label ng-show="filled===false" ng-hide="filled===true" style="color:red;">{{errorMsg}}</label>
         </div>

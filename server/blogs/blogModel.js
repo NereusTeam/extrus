@@ -8,6 +8,7 @@ var blogSchema = new Schema({
 	title : {type : String , required: true},
 	blog : {type : String , required: true},
 	likes: {type : [String] , required: false},
+	image : {type : String },
 	comments: {type : [{username: String, comment : String}]}
 });
 

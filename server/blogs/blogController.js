@@ -25,7 +25,8 @@ module.exports = {
 			//from : req.body.username,
 			from : req.body.username,
 			title : req.body.title,
-			blog : req.body.blog
+			blog : req.body.blog,
+			image : req.body.image
 		});
 
 		newBlog.save(function(err, newBlog){
