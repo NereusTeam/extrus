@@ -16,8 +16,7 @@
     "node": "0.10"
   },
   "scripts": {
-    "lint": "jscs ./",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "lint": "jscs ./"
   },
   "repository": {
     "type": "git",
