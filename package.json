@@ -29,7 +29,6 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "bower":"latest",
     "browser-sync": "^1.5.7",
     "clone-stats": "0.0.1",
     "gulp": "^3.8.5",
@@ -47,6 +46,7 @@
     "mongoose": "latest",
     "morgan": "latest",
     "q": "^1.4.1",
-    "socket.io": "latest"
+    "socket.io": "latest",
+    "bower":"latest"
   }
 }
