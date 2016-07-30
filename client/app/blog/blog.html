@@ -16,7 +16,7 @@
 	            ng-repeat="blog in data.blogs | filter:search">
 		        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 		      	<div class="col-lg-3 col-md-3 col-sm-6">
-		        	<img style='margin-top:2em'src="{{blog.image}}" class="profilePic img-circle"><br><br><br><br>
+		        	<img style='margin-top:2em'src="{{blog.Userimage}}" class="profilePic img-circle"><br><br><br><br>
 		      	</div>
 		      	<div class="col-lg-1 col-md-0 col-sm-0"></div>
 		      	<div class="blogInfo col-lg-7 col-md-8 col-sm-6">
@@ -24,8 +24,9 @@
 			        <h2>{{blog.title}}</h2>
 			        <h3>{{blog.blog}}</h3>
 			        <br>
+			        	<img src="{{blog.image}}">
+			        	{{blog.image}}
 			        <p ng-click="like(blog._id)">Likes:{{blog.likes.length}}</p>
-			       <!--  <form name="signupForm" method="post" ng-submit='comment(blog._id)'> -->
 			        comments:<input type="text" name="comment" ng-model="something"><button ng-click="comment(blog._id,something)">send</button>
 			        <p ng-repeat="comment in blog.comments">
 			        {{comment.username}} : {{comment.comment}}
