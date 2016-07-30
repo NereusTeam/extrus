@@ -38,6 +38,7 @@ module.exports = function(app, express){
 	app.post('/api/users/sendMessage',helpers.decode, messageController.sendMessage);
 	app.post('/api/users/getMessages',helpers.decode, messageController.getMessage);
 	app.post('/api/users/getUserMessagedFriends',helpers.decode, messageController.getUserMessagedFriends);
+	app.get('/api/users/:username', userController.getOne);
 
 	// app.get('/api/users/getMessages', messageController.getAllMessages); just for testing
 
@@ -49,10 +50,9 @@ module.exports = function(app, express){
 
 	//adding events
 
-	app.get('/api/users/events',eventsController.getImages)
-	app.post('/api/users/events', eventsController.saveImage)
+	app.get('/api/events',eventsController.getImages)
+	app.post('/api/events', eventsController.saveImage)
 	app.get('/api/users/:id',helpers.decode, userController.getOne);
-	app.get('/api/users/:username', userController.getOne);
 
 	// If a request is sent somewhere other than the routes above,
 	// send it through custom error handler
