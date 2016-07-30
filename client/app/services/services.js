@@ -276,7 +276,7 @@ angular.module('RBKme.services', [])
 
 .factory('socket', function () {
     var chat = function () {
-      var socket = io.connect('http://localhost:8000')
+      var socket = io.connect()
       return socket;  
     }
     return {
@@ -300,3 +300,5 @@ angular.module('RBKme.services', [])
       getMessages: getMessages
     }
 })
+
+

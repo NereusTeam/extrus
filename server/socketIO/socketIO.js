@@ -15,7 +15,7 @@ module.exports = function (io){
         data:new Date()
       })
       message.save(function(err,saved){
-        io.sockets.emit('get msg'+data.to ,data);
+        io.sockets.emit('get msg'+data.to ,saved);
       })
     })
     // socket.on('send msg', function (data) {
