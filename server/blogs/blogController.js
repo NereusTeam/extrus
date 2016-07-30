@@ -52,18 +52,24 @@ module.exports = {
 		//var username = req.body.username;
 		var username = req.user.username;
 		var blogId = req.body.blogId;
+		console.log(username);
+		console.log(blogId);
 
 		Blog.findOne({_id:blogId})
 		.exec(function (error, blog){
 			if(error){
 				res.status(500).send(error);
 			}else{
-				if(!blog.likes.includes(username)){
-					blog.likes.push(username);
-					module.exports.save(req,res,blog,"like");
-				}else{
-					blog.likes.splice(blog.likes.indexOf(username),1);
-					module.exports.save(req,res,blog,"unlike")
+				console.log(blog);
+				if(blog.likes){
+					if(blog.likes.indexOf(username)===-1){
+						blog.likes.push(username);
+						module.exports.save(req,res,blog,"like");
+					}
+					else{
+						blog.likes.splice(blog.likes.indexOf(username),1);
+						module.exports.save(req,res,blog,"unlike")
+					}
 				}
 			}
 		})

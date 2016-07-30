@@ -16,6 +16,7 @@ module.exports = function (io){
       })
       message.save(function(err,saved){
         io.sockets.emit('get msg'+data.to ,saved);
+        console.log('get msg'+data.to);
       })
     })
     // socket.on('send msg', function (data) {

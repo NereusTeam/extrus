@@ -21,13 +21,11 @@ angular.module('RBKme.chatroom', [])
 })
 
 
-.controller('chatroomController', function ($scope, Users ,Messages, $location, $anchorScroll) {
+.controller('chatroomController', function ($scope, socket, Users, Messages , $window) {
 
 	$scope.data={};
   $scope.curentUser={};
   $scope.toUser={};
-  $scope.flagFrom=true;
-  $scope.flagTo=true;
 
 
   $scope.initalize = function(){
@@ -56,6 +54,29 @@ angular.module('RBKme.chatroom', [])
 
   $scope.initalize();
 
+  $scope.sendMessage = function () {
+    var mesg={ 
+      from : $scope.curentUser.username ,
+      to :   $scope.toUser.username,
+      text : $scope.messageText
+    };
+
+    socket.chat().emit('send msg', mesg);
+    $scope.data.messages.push(mesg);
+    $scope.messageText = '';
+  }
+    console.log('get msg'+window.localStorage.getItem('username'));
+
+  socket.chat().on('get msg'+window.localStorage.getItem('username'), function (data) {
+    console.log('asdasd');
+    $scope.data.messages.push(data);
+    $scope.$digest();
+    //$scope.initalize();
+    console.log($scope.data.messages);
+
+  })
+
+
   $scope.setUser = function(user) {
     $scope.toUser=user;
     Messages.getMessages({username:$scope.curentUser.username , friend :user.username})
@@ -69,30 +90,30 @@ angular.module('RBKme.chatroom', [])
     })
   }
 
-  $scope.sendMessage=function(){
-    var mesg={ 
-      from : $scope.curentUser.username ,
-      to :   $scope.toUser.username,
-      text : $scope.messageText
-    };
+  // $scope.sendMessage=function(){
+  //   var mesg={ 
+  //     from : $scope.curentUser.username ,
+  //     to :   $scope.toUser.username,
+  //     text : $scope.messageText
+  //   };
 
-    Messages.sendMessage(mesg)
-      .then(function(response){
-        if(response.status === 201){
-          $scope.data.messages.push(mesg);
-        } else {
-          alert('Something Went Wrong, Please Try Again!');
-        }
-        $scope.messageText="";
-      })
-      .catch(function(error){
-        console.log(error);
-      });
+  //   Messages.sendMessage(mesg)
+  //     .then(function(response){
+  //       if(response.status === 201){
+  //         $scope.data.messages.push(mesg);
+  //       } else {
+  //         alert('Something Went Wrong, Please Try Again!');
+  //       }
+  //       $scope.messageText="";
+  //     })
+  //     .catch(function(error){
+  //       console.log(error);
+  //     });
 
-    console.log(mesg);
+  //   console.log(mesg);
 
 
-  }
+  // }
   
 })
 
