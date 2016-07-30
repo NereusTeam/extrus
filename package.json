@@ -9,10 +9,12 @@
     "Farah Amawi <amawifarah@gmail.com>",
     "Sajedah Yousef <yousef.sajedah93@gmail.com>",
     "Tawfik kahwaje <tawfik.kahwaje@gmail.com>",
-    "Hussam Eddin Alhendi <housam35@gmail.com>"
+    "Hussam Eddin Alhendi <housam35@gmail.com>",
+    "Mihyar Almasalma <eng.mihyear@gmail.com>"
   ],
   "scripts": {
-    "lint": "jscs ./"
+    "lint": "jscs ./",
+    "postinstall" : "bower install"
   },
   "repository": {
     "type": "git",
