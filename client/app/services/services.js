@@ -285,8 +285,17 @@ angular.module('RBKme.services', [])
 })
 
 
-
-.factory('room', function ($http) {
+.factory('Rooms', function ($http) {
+  var addNewRoom = function (room) {
+    return $http({
+      method: 'POST',
+      url: '/api/rooms',
+      data: room
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  }
   var getMessages = function (clickedRoom) {
       return $http({
         method: 'GET',
@@ -295,10 +304,11 @@ angular.module('RBKme.services', [])
       .then(function (resp) {
         return resp.data;
       });
-    }
-    return {
-      getMessages: getMessages
-    }
+  }
+  return {
+    addNewRoom: addNewRoom,
+    getMessages: getMessages
+  }
 })
 
 
