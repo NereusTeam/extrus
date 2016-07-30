@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="styles/button.css" />
+<link rel="stylesheet" href='styles/master.css' type="text/css" media="screen, projection" />
+<div ng-controller="Eventcontroller" class="md-padding" ng-cloak style="background-color:white">
+ <div>
+     <ul>
+        <li><a ng-click="addEvent($event)" ng-show="auth()===true" ng-hide="auth()===false" value="add event" class="round green">Add Event<span class="round">add event here</span></a></li>
+     </ul>
+</div>
+
+<div ng-repeat="event in images">
+<h1 style="color: #66ccff; font-weight: bold;">{{event.eventName}}</h1>
+
+<div class="gallery cf">
+		<div>
+			<div ng-repeat="file in event.image track by $index">
+	    		<img ng-src="{{file}}" />
+	   	 	</div>
+		</div>
+</div>
+</div>
+     	<br><br><br><br>
+</div>
+
+
