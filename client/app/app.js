@@ -10,13 +10,15 @@ angular.module('RBKme', [
   'RBKme.home',
   'RBKme.auth',
   'RBKme.admin',
-  'RBKme.socketIO',
   'RBKme.chat',
   'RBKme.chatroom',
   'ngRoute',
   'ngMaterial',
   'ngAnimate',
-  'jkAngularRatingStars'
+  'jkAngularRatingStars',
+  //added Rbk events,
+  'RBKme.events',
+  'RBKme.newEvent'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
@@ -44,9 +46,9 @@ angular.module('RBKme', [
       templateUrl: 'app/chatroom/chatroom.html',
       controller: 'chatroomController',
     })
-    .when('/scotch', {
-      templateUrl: 'app/scotch/scotch.html',
-      controller: 'ScotchCtrl',
+    .when('/events',{
+      templateUrl: 'app/events/events.html',
+      controller:'Eventcontroller'
     })
     .otherwise({
       redirectTo: '/'

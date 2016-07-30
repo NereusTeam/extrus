@@ -285,8 +285,17 @@ angular.module('RBKme.services', [])
 })
 
 
-
-.factory('room', function ($http) {
+.factory('Rooms', function ($http) {
+  var addNewRoom = function (room) {
+    return $http({
+      method: 'POST',
+      url: '/api/rooms',
+      data: room
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  }
   var getMessages = function (clickedRoom) {
       return $http({
         method: 'GET',
@@ -295,10 +304,38 @@ angular.module('RBKme.services', [])
       .then(function (resp) {
         return resp.data;
       });
-    }
-    return {
-      getMessages: getMessages
-    }
-})
+  }
+  return {
+    addNewRoom: addNewRoom,
+    getMessages: getMessages
+  }
+});
 
+.factory('Events',function($http){
+  var getImages=function(){
+    return $http({
+      method: 'GET',
+      url:'/api/users/events'
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
+  var saveImage=function(image){
+    return $http({
+      method: 'POST',
+      url:'/api/users/events',
+      data:image
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  };
+  
+  return{
+    getImages : getImages,
+    saveImage : saveImage
+  }
+})
 
