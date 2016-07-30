@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "lint": "jscs ./",
-    "postinstall" : "bower install"
+    "postinstall" : "./node_modules/.bin/bower install"
   },
   "repository": {
     "type": "git",
