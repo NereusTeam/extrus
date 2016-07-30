@@ -5,8 +5,7 @@ angular.module('RBKme.socketIO', [])
     $scope.messages = [];
     $scope.room = "";
 
-
-
+    
 
     socket.on('user joined', function (data) {
         console.log(data.username + ' has joined');
