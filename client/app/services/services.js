@@ -315,7 +315,7 @@ angular.module('RBKme.services', [])
   var getImages=function(){
     return $http({
       method: 'GET',
-      url:'/api/users/events'
+      url:'/api/events'
     })
     .then(function(resp){
       return resp.data;
@@ -325,7 +325,7 @@ angular.module('RBKme.services', [])
   var saveImage=function(image){
     return $http({
       method: 'POST',
-      url:'/api/users/events',
+      url:'/api/events',
       data:image
     })
     .then(function(resp){

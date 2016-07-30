@@ -40,7 +40,7 @@ angular.module('RBKme.chatroom', [])
     Users.getOne(window.localStorage.getItem('username'))
     .then(function(user){
       $scope.curentUser=user;
-      console.log($scope.curentUser)
+      console.log($scope.curentUser);
     })
     .catch (function(error){
       console.log(error);
