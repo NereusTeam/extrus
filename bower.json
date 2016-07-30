@@ -15,13 +15,8 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-socket-io" : "^0.7.0",
-    "socket-io": "latest",
     "angular-mocks": "latest",
     "angular-material": "latest",
-    "angular-jk-rating-stars": "latest",
-    "angular-scroll-glue": "^2.0.7"
-  },
-  "resolutions": {
-    "angular": "1.5.7"
-  }
+    "angular-jk-rating-stars":"latest",
+    "FortAwesome/Font-Awesome": "*"
 }

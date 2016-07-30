@@ -1,39 +1,26 @@
 angular.module('RBKme.chat', [])
 
-.controller('chatController', function ($scope, chat , Users, Messages , $window) {
+
+.controller('chatController', function ($scope, socket, Users, Messages , $window) {
 	$scope.msg = {};
 	$scope.msgs = [];
+	$scope.msg.from = $window.localStorage.getItem('username');
+	console.log($scope.msg.from)
 	$scope.data={};
-	$scope.sendMsg = function (socket) {
-		// send one to one message
-		$scope.msg.from = $window.localStorage.getItem('username');
-		Messages.sendMessage($scope.msg)
-		.then(function(resp){
-			if(resp.status === 201)
-				console.log('done')
-			else{
-				alert('Something Went Wrong, Please Try Again!');
-			}
-		});
-
-		chat.socket().emit('send msg',$scope.msg.to, $scope.msg.text);
+	$scope.sendMsg = function () {
+		socket.chat().emit('send msg', {to: $scope.msg.to, from: $scope.msg.from, text:$scope.msg.text});
 		$scope.msg.text = '';
+		console.log($scope.msg.to)
 	}
 
-	chat.socket().on('get msg', function (data) {
+	socket.chat().on('get msg'+$scope.msg.from, function (data) {
 		$scope.msgs.push(data);
 		console.log($scope.msgs)
 		$scope.$digest()
-	});
 
-	//display all users on screen
+	})
 	Users.getAll()
 		.then(function(users){
 			$scope.data.friends = users;
 	});
-
-
-			
 })
-
-//$scope.msg.to
