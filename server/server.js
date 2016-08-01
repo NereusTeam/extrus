@@ -7,7 +7,7 @@ var server   = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
 
-var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/extrus';
+var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/khitwa';
 
 var port = process.env.PORT || 8000;
 // connect to mongo database named "extrus"
